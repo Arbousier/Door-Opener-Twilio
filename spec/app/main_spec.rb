@@ -21,15 +21,16 @@ describe 'The root' do
   end
 
   it "should send back a message if token and phone are ok" do
-    post "/phone/#{FIXTURES['authorized_numbers'].first}", {'TOKEN' => FIXTURES['tokens'].first}
+    post "/phone/#{FIXTURES['authorized_numbers'].first}", nil,
+      {'TOKEN' => FIXTURES['tokens'].first}
     last_response.should be_ok
     JSON.parse(last_response.body).should == {"message" => "Hello, Thomas"}
   end
 
   it "should open the door if token is present and phone is ok" do
-    post "/phone/#{FIXTURES['authorized_numbers'].first}", {'TOKEN' => FIXTURES['tokens'].first}
-    last_response.should be_ok
     Door.should_receive(:open).once
+    post "/phone/#{FIXTURES['authorized_numbers'].first}", nil,
+      {'TOKEN' => FIXTURES['tokens'].first}
+    last_response.should be_ok
   end
-
 end

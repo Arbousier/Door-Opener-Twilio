@@ -2,13 +2,12 @@
 require 'json'
 
 class WsApp < Sinatra::Application
-  before /phone/ do
-    puts env.inspect + "\n\n"
-  end
 
   before do
-    if (env['TOKEN'] || env['X-TOKEN'] || env['HTTP-TOKEN'] || env['HTTP_TOKEN'])
-      token = env['TOKEN'] || env['X-TOKEN'] || env['HTTP-TOKEN'] || env['HTTP_TOKEN']
+    if (env['TOKEN'] || env['X-TOKEN'] ||
+      env['HTTP-TOKEN'] || env['HTTP_TOKEN'])
+      token = env['TOKEN'] || env['X-TOKEN'] ||
+        env['HTTP-TOKEN'] || env['HTTP_TOKEN']
       unless FIXTURES['tokens'].include? token
         halt 403, "forbidden"
       end
@@ -22,7 +21,11 @@ class WsApp < Sinatra::Application
   end
 
   post "/phone/:number" do
-    "ok"
+    if FIXTURES['authorized_numbers'].include?(params[:number])
+      Door.open
+      {'message' => "Hello, Thomas"}.to_json
+    else
+      halt 403, "forbidden"
+    end
   end
- 
 end
