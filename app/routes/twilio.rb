@@ -5,7 +5,7 @@ class WsApp < Sinatra::Application
 
   post '/twilio/door' do
     num = Number.get(:number => params['From'])
-    if num['authorized']
+    if num && num['authorized']
       Door.open
       Twilio::TwiML::Response.new do |r|
         lang = ['fr', 'it', 'es', 'en'].shuffle.first
