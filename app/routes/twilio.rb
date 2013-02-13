@@ -8,7 +8,7 @@ class WsApp < Sinatra::Application
     if num['authorized']
       Door.open
       Twilio::TwiML::Response.new do |r|
-        r.Say "Hello #{num['name']}"
+        r.Say "Hello #{num['name']}, the door is open, you can now push it."
         r.Say "Here is a quote for you :"
         r.Say Quote.random
       end.text
