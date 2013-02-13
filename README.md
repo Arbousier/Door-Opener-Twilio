@@ -36,3 +36,16 @@ In testing most data is read from temp files, once deployed it's a different sto
 * CLOUDANT_KEY
 * CLOUDANT_PASSWORD
 * DOOR_URL
+
+### LICENSE
+
+Under Mit license ! See LICENSE file.
+
+### Contributors
+
+* Thomas Riboulet / @mcansky
+
+### Thanks
+
+* Snootlab / @snootlab
+* Tau / @taucw
