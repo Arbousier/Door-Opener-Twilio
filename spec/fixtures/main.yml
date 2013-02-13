@@ -1,8 +1,0 @@
-tokens:
-- 78aa8e9c74eca3e48747527dae9a663309455a1b
-- 3309455a1b9c74eca78aa8ea663e48747527dae9
-authorized_numbers:
-- "0605050505"
-- "0606060606"
-blacklisted_numbers:
-- "0600000000"

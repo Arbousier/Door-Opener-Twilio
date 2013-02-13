@@ -1,21 +1,25 @@
 # encoding: utf-8
 require 'sinatra'
+require 'twilio-ruby'
 require 'json'
+require 'rest-client'
 
 class WsApp < Sinatra::Application
   enable :sessions
-  FIXTURES = YAML.load_file File.expand_path("../../spec/fixtures/main.yml", __FILE__)
+  QUOTES = YAML.load_file File.expand_path("../../config/quotes.yml", __FILE__)
 
   configure :production do
     set :clean_trace, true
+    CLOUDANT = {'host' => ENV['CLOUDANT_HOST'],
+      'key' => ENV['CLOUDANT_KEY'],
+      'password' => ENV['CLOUDANT_PASSWORD']}
   end
 
   configure :development do
-    # ...
+    CLOUDANT = YAML.load_file File.expand_path("../../config/cloudant.yml", __FILE__)
   end
   
   configure :test do
-    set :clean_trace, false
   end
 
   helpers do

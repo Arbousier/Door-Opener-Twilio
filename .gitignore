@@ -1,3 +1,4 @@
 bundler/*
 .bundle/*
 notes.txt
+config/cloudant.yml

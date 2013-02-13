@@ -8,7 +8,8 @@ require 'rspec/autorun'
 require 'rack/test'
 require 'yaml'
 
-FIXTURES = YAML.load_file File.expand_path("../fixtures/main.yml", __FILE__)
+QUOTES = YAML.load_file File.expand_path("../../config/quotes.yml", __FILE__)
+CLOUDANT = YAML.load_file File.expand_path("../../config/cloudant.yml", __FILE__)
 
 set :environment, :test
 
