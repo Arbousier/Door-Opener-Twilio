@@ -1,7 +1,17 @@
 quotes:
-- "Be a yardstick of quality. Some people aren't used to an environment where excellence is expected. Steve Jobs"
-- "Quality is more important than quantity. One home run is much better than two doubles. Steve Jobs."
-- "I never think of the future. It comes soon enough. Albert Einstein."
-- "Everything should be made as simple as possible, but not simpler. Albert Einstein."
-- "Choose a job you love, and you will never have to work a day in your life. Confucius."
-- "Our greatest glory is not in never falling, but in rising every time we fall. Confucius."
+  en:
+    - "Be a yardstick of quality. Some people aren't used to an environment where excellence is expected. Steve Jobs"
+    - "Quality is more important than quantity. One home run is much better than two doubles. Steve Jobs."
+    - "I never think of the future. It comes soon enough. Albert Einstein."
+    - "Everything should be made as simple as possible, but not simpler. Albert Einstein."
+    - "Choose a job you love, and you will never have to work a day in your life. Confucius."
+    - "Our greatest glory is not in never falling, but in rising every time we fall. Confucius."
+  fr:
+    - "La qualité est plus importante que la quantité. Un home run est bien mieux que deux doubles. Steve Jobs."
+    - "Tout devrait être fait aussi simple que possible, mais pas simplement. Albert Einstein."
+    - "La plus grande gloire n'est pas de jamais tomber, mais de se relever à chaque fois que nous tombons. Confucius."
+    - "Je ne pense jamais au futur. Il vient toujours bien assez tôt. Albert Einstein."
+  es:
+    - "Por muy larga que sea la tormenta, el sol siempre vuelve a brillar entre las nubes. Khalil Gibran."
+  it:
+    - "Chi la dura la vince"

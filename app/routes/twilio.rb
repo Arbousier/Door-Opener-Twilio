@@ -10,15 +10,22 @@ class WsApp < Sinatra::Application
       Twilio::TwiML::Response.new do |r|
         lang = ['fr', 'it', 'es', 'en'].shuffle.first
         lang = num['lang'] if num['lang'] != 'rand'
+        speaker = ['woman','man'].shuffle.first
         case lang
         when 'fr'
-          r.Say "Bonjour #{num['name']}, la porte est ouverte, tu peux la pousser.", :voice => ['woman','man'].shuffle.first, :language => 'fr'
+          r.Say "Bonjour #{num['name']}, la porte est ouverte, tu peux la pousser.", :voice => speaker, :language => 'fr'
+          r.Say "Voila une citation pour toi :", :voice => speaker, :language => 'fr'
+          r.Say Quote.random('fr')
         when 'it'
-          r.Say "Ciao #{num['name']}, la porta è aperta", :voice => ['woman','man'].shuffle.first, :language => 'it'
+          r.Say "Ciao #{num['name']}, la porta è aperta", :voice => speaker, :language => 'it'
+          r.Say "Ecco una citazione per voi", :voice => speaker, :language => 'it'
+          r.Say Quote.random('it')
         when 'es'
-          r.Say "Hola #{num['name']}, la puerta hesta abierta", :voice => ['woman','man'].shuffle.first, :language => 'es'
+          r.Say "Buenos días #{num['name']}, puedes pasar, la puerta está abierta.", :voice => speaker, :language => 'es'
+          r.Say "Aquí hay una cita para usted :", :voice => speaker, :language => 'es'
+          r.Say Quote.random('es')
         else
-          r.Say "Hello #{num['name']}, the door is open, you can now push it.", :voice => ['woman','man'].shuffle.first
+          r.Say "Hello #{num['name']}, the door is open, you can now push it.", :voice => speaker
           r.Say "Here is a quote for you :"
           r.Say Quote.random
         end
