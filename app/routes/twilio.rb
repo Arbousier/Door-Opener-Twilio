@@ -8,9 +8,20 @@ class WsApp < Sinatra::Application
     if num['authorized']
       Door.open
       Twilio::TwiML::Response.new do |r|
-        r.Say "Hello #{num['name']}, the door is open, you can now push it."
-        r.Say "Here is a quote for you :"
-        r.Say Quote.random
+        lang = ['fr', 'it', 'es', 'en'].shuffle.first
+        lang = num['lang'] if num['lang'] != 'rand'
+        case lang
+        when 'fr'
+          r.Say "Bonjour #{num['name']}, la porte est ouverte, tu peux la pousser.", :voice => ['woman','man'].shuffle.first, :language => 'fr'
+        when 'it'
+          r.Say "Ciao #{num['name']}, la porta è aperta", :voice => ['woman','man'].shuffle.first, :language => 'it'
+        when 'es'
+          r.Say "Hola #{num['name']}, la puerta hesta abierta", :voice => ['woman','man'].shuffle.first, :language => 'es'
+        else
+          r.Say "Hello #{num['name']}, the door is open, you can now push it.", :voice => ['woman','man'].shuffle.first
+          r.Say "Here is a quote for you :"
+          r.Say Quote.random
+        end
       end.text
     else
       Twilio::TwiML::Response.new do |r|
