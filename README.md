@@ -27,3 +27,12 @@ Since there is very little to store I decided to play a bit more and use Cloudan
 ### Todo
 
 * Create something to add new people easily.
+
+
+### Needed env vars
+
+In testing most data is read from temp files, once deployed it's a different story.
+* CLOUDANT_HOST
+* CLOUDANT_KEY
+* CLOUDANT_PASSWORD
+* DOOR_URL
