@@ -8,6 +8,7 @@ class WsApp < Sinatra::Application
     num = Number.get(:number => params['From'])
     if num && num['authorized']
       Door.open
+      Notifier.notify num['name']
       Twilio::TwiML::Response.new do |r|
         lang = ['fr', 'it', 'es', 'en'].shuffle.first
         lang = num['lang'] if num['lang'] != 'rand'
