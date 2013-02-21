@@ -5,7 +5,12 @@ describe 'Twilio' do
   let(:number) { '12345' }
   subject { post '/twilio/door', 'From' => number }
 
-  context "when konwn number" do
+  before {
+    Notifier.stub(:notify)
+    Door.stub(:open)
+  }
+
+  context "when known number" do
     let(:is_authorized?) { false }
     before do
       Number.stub(:get).and_return 'number' => number, 'name' => 'joe', 'authorized' => is_authorized?
@@ -57,5 +62,4 @@ private
     Door.should_receive :open
     Notifier.should_receive :notify, with: 'joe'
   end
-
 end
