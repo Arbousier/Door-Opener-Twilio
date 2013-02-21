@@ -2,12 +2,16 @@
 CLOUDANT = {'host' => ENV['CLOUDANT_HOST'],
   'key' => ENV['CLOUDANT_KEY'],
   'password' => ENV['CLOUDANT_PASSWORD']}
-
+# number model
 class Number
+  def self.host
+    "https://#{CLOUDANT['key']}:#{CLOUDANT['password']}@#{CLOUDANT['host']}"
+  end
   def self.get_ids
     _a = []
-    _l = "https://#{CLOUDANT['key']}:#{CLOUDANT['password']}@#{CLOUDANT['host']}/_all_docs"
-    RestClient.get(_l, :content_type => :json, :accept => :json) do |response, request, result, &block|
+    _l = "#{Number.host}/_all_docs"
+    RestClient.get(_l, :content_type => :json,
+      :accept => :json) do |response, request, result, &block|
         case response.code
         when 200
           JSON.parse(response.body)['rows'].each { |i| _a << i['id'] }
@@ -26,8 +30,9 @@ class Number
   end
 
   def self.get(hsh = {})
-    _l = "https://#{CLOUDANT['key']}:#{CLOUDANT['password']}@#{CLOUDANT['host']}/#{hsh[:number].gsub('+','')}"
-    RestClient.get(_l, :content_type => :json, :accept => :json) do |response, request, result, &block|
+    _l = "#{Number.host}/#{hsh[:number].gsub('+','')}"
+    RestClient.get(_l, :content_type => :json,
+      :accept => :json) do |response, request, result, &block|
         case response.code
         when 200
           return JSON.parse(response.body)

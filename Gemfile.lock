@@ -7,6 +7,8 @@ GEM
     bourne (1.1.2)
       mocha (= 0.10.5)
     builder (3.1.4)
+    cane (2.5.2)
+      parallel
     diff-lcs (1.1.3)
     factory_girl (4.2.0)
       activesupport (>= 3.0.0)
@@ -21,12 +23,14 @@ GEM
       metaclass (~> 0.0.1)
     multi_json (1.5.0)
     nokogiri (1.5.6)
+    parallel (0.6.2)
     rack (1.5.2)
     rack-protection (1.3.2)
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
     raindrops (0.10.0)
+    rake (10.0.3)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rspec (2.12.0)
@@ -62,11 +66,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  cane
   factory_girl
   json
   nokogiri
   rack (~> 1.5)
   rack-test
+  rake
   rest-client
   rspec
   shoulda

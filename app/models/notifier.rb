@@ -1,5 +1,5 @@
 # encoding: UTF-8
-
+# notifier model
 class Notifier
 
   class << self

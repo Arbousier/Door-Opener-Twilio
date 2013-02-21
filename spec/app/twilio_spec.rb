@@ -13,7 +13,8 @@ describe 'Twilio' do
   context "when known number" do
     let(:is_authorized?) { false }
     before do
-      Number.stub(:get).and_return 'number' => number, 'name' => 'joe', 'authorized' => is_authorized?
+      Number.stub(:get).and_return('number' => number, 'name' => 'joe',
+        'authorized' => is_authorized?)
     end
 
 

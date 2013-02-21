@@ -9,7 +9,8 @@ require 'rack/test'
 require 'yaml'
 
 QUOTES = YAML.load_file File.expand_path("../../config/quotes.yml", __FILE__)
-CLOUDANT = YAML.load_file File.expand_path("../../config/cloudant.yml", __FILE__)
+CLOUDANT = YAML.load_file File.expand_path("../../config/cloudant.yml",
+   __FILE__)
 
 set :environment, :test
 

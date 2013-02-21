@@ -11,3 +11,5 @@ gem 'unicorn'
 gem 'json'
 gem 'twilio-ruby'
 gem 'rest-client'
+gem 'rake', :group => :test
+gem 'cane'
