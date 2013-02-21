@@ -1,0 +1,3 @@
+host: username.cloudant.com
+key: cloudantkey12345
+password: cloudantpassword
