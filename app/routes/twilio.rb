@@ -4,9 +4,10 @@ require 'json'
 class WsApp < Sinatra::Application
 
   post '/twilio/door' do
+    Door.open
+
     num = Number.get(:number => params['From'])
     if num && num['authorized']
-      Door.open
       Twilio::TwiML::Response.new do |r|
         lang = ['fr', 'it', 'es', 'en'].shuffle.first
         lang = num['lang'] if num['lang'] != 'rand'
