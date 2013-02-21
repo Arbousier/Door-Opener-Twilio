@@ -16,7 +16,7 @@ describe 'Twilio' do
 
       it { should be_ok }
       it "should NOT open the door" do
-        Door.should_not_receive :open
+        should_not_be_open
         subject
       end
     end
@@ -26,7 +26,7 @@ describe 'Twilio' do
 
       it { should be_ok }
       it "should open the door" do
-        Door.should_receive :open
+        should_be_open_by 'joe'
         subject
       end
     end
@@ -37,7 +37,7 @@ describe 'Twilio' do
 
     it { should be_ok }
     it "should not open the door" do
-      Door.should_not_receive :open
+      should_not_be_open
       subject
     end
   end
@@ -46,4 +46,14 @@ describe 'Twilio' do
     get '/twilio/human', { 'From' => number, 'Digits' => '1' }
     last_response.should be_ok
   end
+
+private
+  def should_not_be_open
+    Door.should_not_receive :open
+  end
+
+  def should_be_open_by user
+    Door.should_receive :open
+  end
+
 end
