@@ -50,10 +50,12 @@ describe 'Twilio' do
 private
   def should_not_be_open
     Door.should_not_receive :open
+    Notifier.should_not_receive :notify
   end
 
   def should_be_open_by user
     Door.should_receive :open
+    Notifier.should_receive :notify, with: 'joe'
   end
 
 end
