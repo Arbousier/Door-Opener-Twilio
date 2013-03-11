@@ -16,8 +16,8 @@ class Notifier
     def hash_for username
       {
         external_user_name: username,
-        content: ":notes:J'ouvre la porte de Tau...:notes:",
-        tags: [ '#door' ]
+        content: ENV['NOTIFICATION_MESSAGE'],
+        tags: [ 'door' ]
       }
     end
   end

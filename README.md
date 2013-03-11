@@ -37,6 +37,7 @@ In testing most data is read from temp files, once deployed it's a different sto
 * CLOUDANT_PASSWORD
 * DOOR_URL
 * FLOWDOCK_FLOW_TOKEN
+* NOTIFICATION_MESSAGE (the message that's sent to flowdock)
 
 ### LICENSE
 
